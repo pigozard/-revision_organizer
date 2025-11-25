@@ -3,16 +3,13 @@ class MessagesController < ApplicationController
     @chat = Chat.find(params[:chat_id])
     @message = @chat.messages.new(message_params)
 
-    if @message.save
+      if @message.save
       # Logique du chatbot ici
-      # Réponse JSON ou redirection
-      respond_to do |format|
-        format.json { render json: @message, status: :created }
-        format.html { redirect_to bloc_path(@chat.bloc) }
-      end
+      redirect_to bloc_path(@chat.bloc), notice: "Message envoyé !"
     else
-      render json: { errors: @message.errors }, status: :unprocessable_entity
+      redirect_to bloc_path(@chat.bloc), alert: "Erreur : message non envoyé"
     end
+   
   end
 
   private
