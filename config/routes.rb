@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'messages/create'
+  get 'chats/create'
+  get 'blocs/index'
+  get 'blocs/show'
+  get 'users/new'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -9,4 +14,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Routes pour les blocs
+  resources :blocs, only: [:index, :show]
+
+  # Routes pour les chats avec messages nestés
+  resources :chats, only: [:create] do
+    resources :messages, only: [:create]
+  end
 end
