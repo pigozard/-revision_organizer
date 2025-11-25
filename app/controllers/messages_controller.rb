@@ -1,20 +1,27 @@
 class MessagesController < ApplicationController
   def create
-    @chat = Chat.find(params[:chat_id])
-    @message = @chat.messages.new(message_params)
+    @chat = current_user.chats.find(params[:chat_id])
+    @bloc = @chat.bloc
 
-      if @message.save
-      # Logique du chatbot ici
-      redirect_to bloc_path(@chat.bloc), notice: "Message envoyé !"
+    @message = Message.new(message_params)
+    @message.chat = @chat
+    @message.role = "user"
+
+    if @message.save
+      ruby_llm_chat = RubyLLM.chat
+      response = ruby_llm_chat.ask(@message.content)
+      Message.create(role: "assistant", content: response.content, chat: @chat)
+
+      redirect_to chat_messages_path(@chat)
     else
-      redirect_to bloc_path(@chat.bloc), alert: "Erreur : message non envoyé"
+      render "chats/show", status: :unprocessable_entity
     end
-   
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:content, :role)
+    params.require(:message).permit(:content)
   end
+
 end

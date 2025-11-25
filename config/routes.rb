@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/create'
-  get 'chats/create'
-  get 'blocs/index'
-  get 'blocs/show'
-  get 'users/new'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -16,10 +11,12 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # Routes pour les blocs
-  resources :blocs, only: [:index, :show]
+  resources :blocs, only: [:index, :show] do
+    resources :chats, only: [:create]
+  end
 
   # Routes pour les chats avec messages nestés
-  resources :chats, only: [:create] do
+  resources :chats, only: [:show] do
     resources :messages, only: [:create]
   end
 end

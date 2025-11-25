@@ -1,2 +1,23 @@
-<h1>Blocs#show</h1>
-<p>Find me in app/views/blocs/show.html.erb</p>
+
+<div class="row">
+  <div class="col">
+    <h1><%= @bloc.name %></h1>
+    <%= raw(@bloc.content) %>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+
+  <%= link_to "← #{@bloc.name}", bloc_path(@bloc) %>
+
+<h1 id="chat_title"><%= @chat.title %></h1>
+
+<div id="new_message_container">
+  <%= simple_form_for [@chat, @message] do |f| %>
+    <%= f.input :content, label: "Ask a question", required: true, placeholder: "How should I get started with the bloc?" %>
+    <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+
+</div>
