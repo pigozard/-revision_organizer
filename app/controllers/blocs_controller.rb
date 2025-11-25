@@ -5,5 +5,7 @@ class BlocsController < ApplicationController
 
   def show
     @bloc = Bloc.find(params[:id])
+    @chat = Chat.find(params[:chat])
+    @message = Message.new
   end
 end

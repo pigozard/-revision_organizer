@@ -1,18 +1,23 @@
 class ChatsController < ApplicationController
+
   def create
-    @chat = Chat.new(chat_params)
+    @bloc = Bloc.find(params[:bloc_id])
 
+    @chat = Chat.new(title: "Untitled")
+    @chat.bloc = @bloc
+    @chat.user = current_user
     if @chat.save
-      # Redirection ou réponse JSON
-      redirect_to blocs_path, notice: 'Chat créé avec succès'
+      redirect_to bloc_path(@bloc, chat: @chat)
     else
-      render :new, status: :unprocessable_entity
+      render "blocs/show"
     end
+
+
   end
 
-  private
-
-  def chat_params
-    params.require(:chat).permit(:user_id, :bloc_id)
+  def show
+    @chat    = current_user.chats.find(params[:id])
+    @message = Message.new
   end
+
 end

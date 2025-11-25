@@ -7,3 +7,24 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Bloc.create!([{
+  name: "Bloc 1",
+  content: "ceci est un content",
+  bloc_prompt: "ceci est un prompt"
+},
+{
+  name: "Bloc 2",
+  content: "ceci est un content",
+  bloc_prompt: "ceci est un prompt"
+},
+{
+  name: "Bloc 3",
+  content: "ceci est un content",
+  bloc_prompt: "ceci est un prompt"
+},
+{
+  name: "Bloc 4",
+  content: "ceci est un content",
+  bloc_prompt: "ceci est un prompt"
+}
+])
