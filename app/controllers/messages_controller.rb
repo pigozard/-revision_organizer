@@ -51,7 +51,6 @@ Your tone: encouraging, educational, and concise."
       response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
       Message.create(role: "assistant", content: response.content, chat: @chat)
 
-      @chat.messages.create(role: "assistant", content: response.content)
       @chat.generate_title_from_first_message
 
       redirect_to chat_path(@chat)
