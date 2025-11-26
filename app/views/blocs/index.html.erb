@@ -1,13 +1,39 @@
-<div class="row justify-content-center">
-  <div class="col-md-10">
-    <div class="row g-4">
-      <% @blocs.each do |bloc| %>
-        <div class="col-md-6">
-          <%= button_to "New Chat", bloc_chats_path(bloc), class: "btn-grad" %>
-            <h3><%= bloc.name %></h3>
-            <p class="mb-0">Associations & Validations</p>
+
+<div class="blocs-timeline-container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h1 class="timeline-title">📚 Parcours d'Apprentissage</h1>
+        <p class="timeline-subtitle">Sélectionne un bloc pour commencer ta révision</p>
+
+        <div class="timeline-vertical">
+          <div class="timeline-line"></div>
+
+          <% @blocs.each_with_index do |bloc, index| %>
+            <div class="timeline-item" data-index="<%= index %>">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-year">BLOC <%= index + 1 %></div>
+                <div class="timeline-card">
+                  <h3 class="timeline-card-title"><%= bloc.name %></h3>
+                  <div class="timeline-card-description">
+                    
+                  </div>
+                  <%= link_to bloc_chats_path(bloc),
+                      method: :post,
+                      class: "timeline-btn",
+                      data: { turbo_method: :post } do %>
+                    <span>Commencer</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,3 +1,56 @@
+// Variables de couleurs
+$dark-bg: #0a0e27;
+$dark-card: #151a30;
+$accent-blue: #3b82f6;
+$accent-cyan: #06b6d4;
+$neon-blue: #60a5fa;
+$text-light: #e5e7eb;
+$text-muted: #9ca3af;
+
+// Reset du body
+body {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+  background-attachment: fixed;
+  color: $text-light;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+// Container général
+.container, .container-fluid {
+  color: $text-light;
+}
+
+// Liens
+a {
+  color: $neon-blue;
+  text-decoration: none;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $accent-cyan;
+  }
+}
+
+// Cards style moderne
+.modern-card {
+  background: rgba(21, 26, 48, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+  }
+}
+// Pages modernes
+@import "pages/blocs_timeline";
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
