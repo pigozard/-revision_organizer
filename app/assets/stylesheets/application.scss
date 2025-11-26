@@ -48,8 +48,6 @@ a {
     transform: translateY(-2px);
   }
 }
-// Pages modernes
-@import "pages/blocs_timeline";
 
 // Graphical variables
 @import "config/fonts";
@@ -84,3 +82,7 @@ a {
   color: #fff;
   text-decoration: none;
 }
+
+// Pages modernes
+@import "pages/blocs_timeline";
+@import "pages/chat_modern";
