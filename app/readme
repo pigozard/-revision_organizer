@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+  <div class="col-md-10">
+    <div class="row g-4">
+      <% @blocs.each do |bloc| %>
+        <div class="col-md-6">
+          <%= button_to "New Chat", bloc_chats_path(bloc), class: "btn-grad" %>
+            <h3><%= bloc.name %></h3>
+            <p class="mb-0">Associations & Validations</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
