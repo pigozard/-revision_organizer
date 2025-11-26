@@ -1,43 +1,62 @@
-<div class="row justify-content-center mt-5">
-  <div class="col-12 text-center">
-    <h1 class="mb-5">Choisis ton bloc de révision</h1>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 text-center">
+      <h1 class="mb-5">Choisis ton bloc de révision</h1>
+    </div>
   </div>
-</div>
 
-<div class="row justify-content-center">
-  <div class="col-md-10">
-    <div class="row g-4">
-      <!-- Bloc 1 -->
-      <div class="col-md-6">
-        <%= link_to "#", class: "btn-grad" do %>
-          <h3>Bloc 1</h3>
-          <p class="mb-0">Active Record Basics</p>
-        <% end %>
-      </div>
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="row g-4">
+        <!-- Bloc 1 -->
+        <div class="col-md-6">
+          <%= link_to "#", class: "text-decoration-none" do %>
+            <div class="card text-center p-4 h-100 shadow-sm hover-card">
+              <div class="card-body d-flex flex-column justify-content-center">
+                <h3 class="card-title">Bloc 1</h3>
+                <p class="card-text">Active Record Basics</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
 
-      <!-- Bloc 2 -->
-      <div class="col-md-6">
-        <%= link_to "#", class: "btn-grad" do %>
-          <h3>Bloc 2</h3>
-          <p class="mb-0">Associations & Validations</p>
-        <% end %>
-      </div>
+        <!-- Bloc 2 -->
+        <div class="col-md-6">
+          <%= link_to "#", class: "text-decoration-none" do %>
+            <div class="card text-center p-4 h-100 shadow-sm hover-card">
+              <div class="card-body d-flex flex-column justify-content-center">
+                <h3 class="card-title">Bloc 2</h3>
+                <p class="card-text">Associations & Validations</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
 
-      <!-- Bloc 3 -->
-      <div class="col-md-6">
-        <%= link_to "#", class: "btn-grad" do %>
-          <h3>Bloc 3</h3>
-          <p class="mb-0">Product Design Sprint</p>
-        <% end %>
-      </div>
+        <!-- Bloc 3 -->
+        <div class="col-md-6">
+          <%= link_to "#", class: "text-decoration-none" do %>
+            <div class="card text-center p-4 h-100 shadow-sm hover-card">
+              <div class="card-body d-flex flex-column justify-content-center">
+                <h3 class="card-title">Bloc 3</h3>
+                <p class="card-text">Product Design Sprint</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
 
-      <!-- Bloc 4 -->
-      <div class="col-md-6">
-        <%= link_to "#", class: "btn-grad" do %>
-          <h3>Bloc 4</h3>
-          <p class="mb-0">Rails AI Tools</p>
-        <% end %>
+        <!-- Bloc 4 -->
+        <div class="col-md-6">
+          <%= link_to "#", class: "text-decoration-none" do %>
+            <div class="card text-center p-4 h-100 shadow-sm hover-card">
+              <div class="card-body d-flex flex-column justify-content-center">
+                <h3 class="card-title">Bloc 4</h3>
+                <p class="card-text">Rails AI Tools</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
