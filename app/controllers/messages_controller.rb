@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+
+  SYSTEM_PROMPT = "You are a Teaching Assistant.\n\nI am a student at the Le Wagon AI Software Development Bootcamp, learning how to code.\n\nHelp me break down my problem into small, actionable steps, without giving away solutions.\n\nAnswer concisely in Markdown."
+
   def create
     @chat = current_user.chats.find(params[:chat_id])
     @bloc = @chat.bloc
@@ -9,8 +12,8 @@ class MessagesController < ApplicationController
 
     if @message.save
       ruby_llm_chat = RubyLLM.chat
-      response = ruby_llm_chat.ask(@message.content)
-      Message.create(role: "assistant", content: response.content)
+      response = ruby_llm_chat.with_instructions(instructions).ask(@message.content)
+      Message.create(role: "assistant", content: response.content, chat: @chat)
 
       redirect_to chat_path(@chat)
     else
@@ -24,4 +27,11 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content)
   end
 
+  def bloc_context
+    "Here is the context of the challenge: #{@bloc.content}."
+  end
+
+  def instructions
+    [SYSTEM_PROMPT, bloc_context].compact.join("\n\n")
+  end
 end
