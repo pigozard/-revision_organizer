@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_many :blocs, through: :chats
 
-  validates :pseudo, presence: true
-  validates :mail, presence: true, uniqueness: true
+  # validates :pseudo, presence: true
+  validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 end
