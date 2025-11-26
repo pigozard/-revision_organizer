@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <h1 id="chat_title"><%= @chat.generate_title_from_first_message %></h1>
+  <h1 id="chat_title"><%= @chat.title %></h1>
 
 <div id="messages">
   <% @chat.messages.each do |message| %>

@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
 
   def create
     @bloc = Bloc.find(params[:bloc_id])
-    @chat = Chat.new(title: "Salut Aurélien")
+    @chat = Chat.new(title: Chat::DEFAULT_TITLE)
     @chat.bloc = @bloc
     @chat.user = current_user
     if @chat.save!
@@ -10,8 +10,6 @@ class ChatsController < ApplicationController
     else
       render "blocs/index", status: :unprocessable_entity
     end
-
-
   end
 
   def show
