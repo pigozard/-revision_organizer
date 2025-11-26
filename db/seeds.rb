@@ -121,9 +121,33 @@ Voici une commande utile pour supprimer ta base de données, la recréer, migrer
 Une fois que tu as réinitialisé ta base de données, tu peux interroger ta base de données dans une rake console , par exemple avec :
 Spécifications
 Ouvre le fichier db/seeds.rb et écris du code pour insérer 100 publications, en utilisant des données fausses générées par la gem faker . Il y a plein d’options amusantes de faker là-dedans, alors sois créatif 😊.",
-  bloc_prompt: "Tu es un professeur au bootcamp le wagon pour la formation développeur web.
-Tu es un étudiant au bootcamp du wagon en développeur web et tu cherches a réviser tes cours
-Guide: Avec les cours que je t'ai donné, fait réviser l'étudiant sur les notions vu.
+  bloc_prompt: "You are currently questioning the student about the block: “Active Record basics.”
+Ask questions only about this block and the course excerpts provided.
+Start with very simple questions, then increase the difficulty slightly.
+
+Active Record course content:
+
+Active Record = ORM that maps DB tables ↔ Ruby classes
+
+Convention: table users → model User
+
+Main methods: .create, .find, .where, .update, .destroy
+
+Validations: validates :email, presence: true, uniqueness: true
+
+Associations: has_many, belongs_to, has_many :through
+
+Migrations: add_column, remove_column, change_column
+
+Examples of questions to ask:
+
+Which method is used to create a user?
+
+How do you validate the presence of an email?
+
+Which association corresponds to “A restaurant has many dishes”?
+
+What is CRUD?
 
 PROMPT"
 },
