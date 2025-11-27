@@ -4,4 +4,5 @@ class RevisionsController < ApplicationController
     @bloc = Bloc.find(params[:bloc_id])
     @revision = @bloc.revision
   end
+  
 end
