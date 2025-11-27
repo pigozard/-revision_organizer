@@ -1,4 +1,12 @@
 
+<% links_static_pages = {
+  v33: bloc_page1_path,
+  v34: bloc_page2_path,
+  v35:  bloc_page3_path,
+  v36:  bloc_page4_path
+} %>
+
+
 <div class="blocs-timeline-container">
   <div class="container">
     <div class="row justify-content-center">
@@ -28,10 +36,9 @@
                       <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                     </svg>
                   <% end %>
-                  <%= link_to bloc_revisions_path(bloc),  class: "timeline-btn " do %>
+                  <%= link_to links_static_pages["v#{bloc.id}".parameterize.underscore.to_sym],  class: "timeline-btn " do %>
                   <span>Résumer de cours</span>
                    <% end %>
-
                 </div>
               </div>
             </div>
