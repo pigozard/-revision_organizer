@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   # Routes pour les blocs
   resources :blocs, only: [:index, :show] do
     resources :chats, only: [:create]
-    resource :revisions, only: [:show]
   end
+  get 'revisions/page1', to: 'revisions#page1', as: :bloc_page1
+  get 'revisions/page2', to: 'revisions#page2', as: :bloc_page2
+  get 'revisions/page3', to: 'revisions#page3', as: :bloc_page3
+  get 'revisions/page4', to: 'revisions#page4', as: :bloc_page4
 
 
   # Routes pour les chats avec messages nestés
