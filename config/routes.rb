@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   # Routes pour les blocs
   resources :blocs, only: [:index, :show] do
     resources :chats, only: [:create]
+    resource :revisions, only: [:show]
   end
+
 
   # Routes pour les chats avec messages nestés
   resources :chats, only: [:show] do

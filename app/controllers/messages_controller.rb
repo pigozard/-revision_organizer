@@ -60,7 +60,7 @@ Your tone: encouraging, educational, and concise."
       render "chats/show", status: :unprocessable_entity
     end
   end
-
+  
   def build_conversation_history
     @chat.messages.each do |message|
       @ruby_llm_chat.add_message(message)
