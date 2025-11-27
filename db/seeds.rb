@@ -167,3 +167,10 @@ PROMPT"
   bloc_prompt: "ceci est un prompt"
 }
 ])
+
+Revision.create!([{
+  title: "révision 1",
+  content: "1234",
+  bloc_id: 1
+}
+])
