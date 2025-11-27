@@ -8,6 +8,8 @@ gem "rails", "~> 7.1.6"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 gem "ruby_llm", "~> 1.2.0"
+gem "cloudinary"
+gem "image_processing", "~> 1.2"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

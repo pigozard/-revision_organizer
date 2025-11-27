@@ -9,6 +9,12 @@
   <%- end -%>
   </div>
 
+<%= simple_form_for [challenge, message] do |f| %>
+  <!-- [...] -->
+  <%= f.input :file, as: :file, label: "Upload a file (PDF)" %>
+  <!-- [...] -->
+<% end %>
+
   <div class="form-actions">
     <%%= f.button :submit %>
   </div>
