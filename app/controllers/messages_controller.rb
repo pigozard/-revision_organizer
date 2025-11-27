@@ -11,7 +11,7 @@ Evaluate the student’s answer
 
 If the answer is wrong or incomplete, correct it kindly by explaining the right answer, then ask the next question
 
-If the student is correct, congratulate them briefly and move to the next question
+If the student is correct, say exactly the word '''GREAT''' even in french language,them briefly and move to the next question
 
 Constraints:
 
@@ -51,16 +51,15 @@ Your tone: encouraging, educational, and concise."
       else
         send_question # send question to the model
       end
-
       @chat.messages.create(role: "assistant", content: @response.content)
       @chat.generate_title_from_first_message
-      redirect_to chat_path(@chat)
+      redirect_to chat_path(@chat, scoring: @scoring)
 
     else
       render "chats/show", status: :unprocessable_entity
     end
   end
-  
+
   def build_conversation_history
     @chat.messages.each do |message|
       @ruby_llm_chat.add_message(message)
@@ -68,10 +67,12 @@ Your tone: encouraging, educational, and concise."
   end
 
   def send_question(model: "gpt-4.1-nano", with: {})
+    @scoring = 0
     @ruby_llm_chat = RubyLLM.chat(model: model)
     build_conversation_history
     @ruby_llm_chat.with_instructions(instructions)
     @response = @ruby_llm_chat.ask(@message.content, with: with)
+      @response.content.include?("GREAT") ? @scoring += 1 : @scoring += 0
   end
 
   def process_file(file)
@@ -80,7 +81,8 @@ Your tone: encouraging, educational, and concise."
     elsif file.image?
       send_question(model: "gpt-4o", with: { image: @message.file.url })
     end
-  end
+
+end
 
   private
 
