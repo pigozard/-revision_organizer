@@ -16,6 +16,21 @@
         <h2 class="bloc-title"><%= @chat.bloc.name %></h2>
         <div class="bloc-description">
 
+
+        <% if params[:scoring].to_i == 0 %>
+        <%= image_tag "niveau 0.png", alt: "niveau 0", class:"rounded-circle"  %>
+        <% elsif params[:scoring].to_i == 1%>
+          <%= image_tag "niveau 1.png", alt: "niveau 1" %>
+        <% elsif params[:scoring].to_i == 2%>
+          <%= image_tag "niveau 2.png", alt: "niveau 2" %>
+        <% elsif params[:scoring].to_i == 3%>
+          <%= image_tag "niveau 3.png", alt: "niveau 3" %>
+        <% elsif params[:scoring].to_i == 4%>
+          <%= image_tag "niveau 4.png", alt: "niveau 4" %>
+        <%   else %>
+          <%= image_tag "niveau 5.png", alt: "niveau 5" %>
+        <% end %>
+        <h3>NIVEAU  <%= params[:scoring] %>/5</h3>
         </div>
       </div>
     </div>
