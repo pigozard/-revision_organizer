@@ -46,14 +46,16 @@ Your tone: encouraging, educational, and concise."
     @message.role = "user"
 
     if @message.save
-      @ruby_llm_chat = RubyLLM.chat
-      build_conversation_history
-      response = @ruby_llm_chat.with_instructions(instructions).ask(@message.content)
-      Message.create(role: "assistant", content: response.content, chat: @chat)
+      if @message.file.attached?
+        process_file(@message.file) # send question w/ file to the appropriate model
+      else
+        send_question # send question to the model
+      end
 
+      @chat.messages.create(role: "assistant", content: @response.content)
       @chat.generate_title_from_first_message
-
       redirect_to chat_path(@chat)
+
     else
       render "chats/show", status: :unprocessable_entity
     end
@@ -65,10 +67,25 @@ Your tone: encouraging, educational, and concise."
     end
   end
 
+  def send_question(model: "gpt-4.1-nano", with: {})
+    @ruby_llm_chat = RubyLLM.chat(model: model)
+    build_conversation_history
+    @ruby_llm_chat.with_instructions(instructions)
+    @response = @ruby_llm_chat.ask(@message.content, with: with)
+  end
+
+  def process_file(file)
+    if file.content_type == "application/pdf"
+      send_question(model: "gemini-2.0-flash", with: { pdf: @message.file.url })
+    elsif file.image?
+      send_question(model: "gpt-4o", with: { image: @message.file.url })
+    end
+  end
+
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :file)
   end
 
   def bloc_context
@@ -78,4 +95,5 @@ Your tone: encouraging, educational, and concise."
   def instructions
     [SYSTEM_PROMPT, bloc_context, @bloc.bloc_prompt].compact.join("\n\n")
   end
+
 end

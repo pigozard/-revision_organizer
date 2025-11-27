@@ -1,12 +1,16 @@
 class Message < ApplicationRecord
   belongs_to :chat
+  has_one_attached :file
 
   validates :content, presence: true
   validates :role, presence: true, inclusion: { in: %w[user assistant] }
   validates :chat_id, presence: true
+  # validates :content, length: { minimum: 10, maximum: 1000 }, if: -> { role == "user" }
 
   MAX_USER_MESSAGES = 10
+  MAX_FILE_SIZE_MB = 10
 
+  validate :file_size_limit
   validate :user_message_limit, if: -> { role == "user" }
 
   private
@@ -15,6 +19,12 @@ class Message < ApplicationRecord
     if chat.messages.where(role: "user").count >= MAX_USER_MESSAGES
       errors.add(:content, "You can only send #{MAX_USER_MESSAGES} messages per chat.")
     end
+  end
+
+  def file_size_limit
+  if file.attached? && file.byte_size > MAX_FILE_SIZE_MB.megabytes
+    errors.add(:file, "size must be less than #{MAX_FILE_SIZE_MB}MB")
+  end
   end
 
 end
