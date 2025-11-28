@@ -11,7 +11,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
-        <h1 class="timeline-title">📚 Parcours d'Apprentissage</h1>
+        <h1 class="timeline-title"> <i class="fa-brands fa-studiovinari" style="color: #74C0FC;"></i> Parcours d'Apprentissage</h1>
         <p class="timeline-subtitle">Sélectionne un bloc pour commencer ta révision</p>
 
         <div class="timeline-vertical">
@@ -31,13 +31,16 @@
                       method: :post,
                       class: "timeline-btn",
                       data: { turbo_method: :post } do %>
-                    <span>Commencer</span>
+                    <span>Quizz</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                       <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                     </svg>
                   <% end %>
                   <%= link_to links_static_pages["v#{bloc.id}".parameterize.underscore.to_sym],  class: "timeline-btn " do %>
-                  <span>Résumer de cours</span>
+                  <span>Fiche de révision</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
                    <% end %>
                 </div>
               </div>
