@@ -20,4 +20,9 @@ class Chat < ApplicationRecord
     response = RubyLLM.chat.with_instructions(TITLE_PROMPT).ask(first_user_message.content)
     update(title: response.content)
   end
+
+  def score
+    raw_score = messages.where(role: "assistant").where("content ILIKE '%great%'").count
+    score = [raw_score, 5].min
+  end
 end
