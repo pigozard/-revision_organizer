@@ -38,6 +38,6 @@ Bloc.create!([{
 Revision.create!([{
   title: "révision 1",
   content: "1234",
-  bloc_id: 13
+  bloc_id: 1
 }
 ])
