@@ -86,3 +86,10 @@ a {
 // Pages modernes
 @import "pages/blocs_timeline";
 @import "pages/chat_modern";
+
+#navbarSupportedContent {
+    position: absolute;      /* On place ce groupe en absolu */
+    right: 10px;             /* Collé à droite */
+    top: 50%;                /* Centré verticalement */
+    transform: translateY(-50%);
+}
