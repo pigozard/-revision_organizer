@@ -15,7 +15,7 @@ Bloc.create!([{
    Réponse : update
 
 5) Quelle commande permet de supprimer un enregistrement ?
-   Réponse : destroy", 
+   Réponse : destroy",
   bloc_prompt: "ceci est un prompt"
 },
 {
@@ -38,6 +38,6 @@ Bloc.create!([{
 Revision.create!([{
   title: "révision 1",
   content: "1234",
-  bloc_id: 1
+  bloc_id: 13
 }
 ])
