@@ -1,7 +1,7 @@
 Bloc.destroy_all
 
 Bloc.create!([{
-  name: "Active Record",
+  name: "Analyser les besoins utilisateur et concevoir une application web",
   content: "1) Quelle commande permet de créer un nouvel enregistrement ?
    Réponse : create
 
@@ -19,17 +19,20 @@ Bloc.create!([{
   bloc_prompt: "ceci est un prompt"
 },
 {
-  name: "Bloc 2",
+  name: "Planifier et superviser le développement d’
+une application web en
+équipe",
   content: "ceci est un content",
   bloc_prompt: "ceci est un prompt"
 },
 {
-  name: "Bloc 3",
+  name: "Développer le front-end et le back-end d’
+une application web",
   content: "ceci est un content",
   bloc_prompt: "ceci est un prompt"
 },
 {
-  name: "Bloc 4",
+  name: "Déployer, maintenir et améliorer une application web",
   content: "ceci est un content",
   bloc_prompt: "ceci est un prompt"
 }
